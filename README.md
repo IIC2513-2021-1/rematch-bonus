@@ -57,9 +57,9 @@ yarn dev
 
 ## Forma de entrega
 
-Se habilitará un formulario único para ambas secciones, el cual [pueden encontrar en este link](PENDING). Deben adjuntar **sólo** el script `index.js` en este formulario. Si el formulario no les permite subir un archivo JS, puede entregar el script dentro de un archivo comprimido en `zip`.
+Se habilitará un formulario único para ambas secciones, el cual [pueden encontrar en este link](https://forms.gle/xUWW3NqjVRWWeJf7A). Debe adjuntar en este formulario **sólo** un archivo comprimido en formato `zip` que contenga el script `index.js`.
 
 
-Cualquier duda, no dudes en preguntar en las [issues del proyecto](https://github.com/IIC2513-2021-1/projects/issues).
+Cualquier duda, no dude en preguntar en las [issues del proyecto](https://github.com/IIC2513-2021-1/projects/issues).
 
 ### ¡Éxito!
