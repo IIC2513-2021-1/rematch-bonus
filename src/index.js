@@ -50,7 +50,7 @@ let consultaEjemplo = '(^|\\n)!x{[0-9.]+} - - \\[!y{[^\\n\\]]*}\\] "POST';
         Esta parte puede resultar confusa, pero simplemente estamos extrayendo
         los [dd/mm/yyyy:hh:MM:ss +tz]. Primero necesitamos hacer match con
         un '[', el problema es que REmatchJS tiene ese caracter reservado para
-        su sintáxis (e.g. [0-9]), por lo que debemos escaparlo con '//[' en JS.
+        su sintáxis (e.g. [0-9]), por lo que debemos escaparlo con '\\[' en JS.
         Lo mismo para ']': '\\]'. Así entonces estamos diciendo que vamos a
         asociar a la variable "y" cualquier cosa que no sea un ']' o un '\n',
         que esté dentro de dos corchetes '[ ]' (i.e. '[^\\n\\]]*')
@@ -81,19 +81,19 @@ for (let match of rgx.findIter(TEXT)) {
 */
 
 // Extrer todas las líneas con requests tipo POST:
-const CONSULTA1 = '';
+const CONSULTA1 = '^!x{.*}$';
 
 // Extraer sólo la dirección IP en los requests tipo GET:
-const CONSULTA2 = '';
+const CONSULTA2 = '^!x{.*}$';
 
 // Extraer sólo las requests donde el servidor entrega código NOT FOUND (404):
-const CONSULTA3 = '';
+const CONSULTA3 = '^!x{.*}$';
 
 // Extraer IP de todos los requests que se redirigieron (código 302) y hacia dónde se
 // redirigieron (asumir que es la 2da url):
-const CONSULTA4 = '';
+const CONSULTA4 = '^!x{.*}$';
 
-/* 
+/*
   IDENTIFICAR UN POSIBLE ATAQUE AL SERVIDOR:
 
   Suponga que los logs que actualmente ud. está analizando corresponden a un
@@ -104,7 +104,7 @@ const CONSULTA4 = '';
 
 // Entregue una consulta que busque aquellas direcciones IPs que realizaron
 // un request que contenga la palabra "admin" .
-const CONSULTA5 = '';
+const CONSULTA5 = '^!x{.*}$';
 
 // Si hace lo anterior de manera correcta, encontrará varias direcciones IPs.
 // Necesitamos otra forma entonces de identificar al atacante. Intente entonces
@@ -112,12 +112,12 @@ const CONSULTA5 = '';
 // la palabra "SELECT".
 // La idea es identificar si acaso el atacante obtuvo credenciales a partir de
 // una SQL Injection.
-const CONSULTA6 = '';
+const CONSULTA6 = '^!x{.*}$';
 
 // Si realizó lo anterior con éxito, ya debería saber cuál es la dirección IP
 // del atacante. Obtenga así entonces todas las líneas del archivo log
 // correspondientes a requests realizados por el atacante
-const CONSULTA7 = '';
+const CONSULTA7 = '^!x{.*}$';
 
 // FUNCIÓN PARA OBTENER EL OBJETO CON TODOS LOS RESULTADOS DE LAS CONSULTAS
 // que será utilizado en la corrección:
@@ -141,4 +141,4 @@ const getAllOutputs = (queriesArray) => {
   return result;
 };
 
-getAllOutputs(arrayConsultas);
+console.log(getAllOutputs(arrayConsultas));
