@@ -133,12 +133,17 @@ const arrayConsultas = [
 ];
 
 const getAllOutputs = (queriesArray) => {
-  let result = new Object();
+  let result = [];
   for (let i = 0; i < queriesArray.length; i++) {
     let rgx = re.compile(queriesArray[i]);
-    result[i + 1] = rgx.findall(TEXT);
+    result.push(rgx.findall(TEXT));
   }
   return result;
 };
 
-console.log(getAllOutputs(arrayConsultas));
+const exportedResults = getAllOutputs(arrayConsultas);
+
+// Puede probar sus resultados con sentencias como la siguiente
+// console.log(exportedResults);
+
+module.exports = exportedResults;
