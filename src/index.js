@@ -102,7 +102,7 @@ const CONSULTA2 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes m
 const CONSULTA3 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
 
 // Extraer IP de todos los requests que se redirigieron (código 302) y hacia dónde se
-// redirigieron (asumir que es la 2da url):
+// redirigieron (suponer que es la 2da url en la línea de log):
 const CONSULTA4 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
 
 /*
@@ -114,13 +114,13 @@ const CONSULTA4 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes m
   al sitio de alguna manera.
 */
 
-// Entregue una consulta que busque aquellas direcciones IPs que realizaron
+// Entregue una consulta que busque aquellas direcciones IP que realizaron
 // un request que contenga la palabra "admin" .
 const CONSULTA5 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
 
 // Si hace lo anterior de manera correcta, encontrará varias direcciones IPs.
 // Necesitamos otra forma entonces de identificar al atacante. Intente entonces
-// buscar todas las direcciones IPs que realizaron una request que contenga
+// buscar todas las direcciones IP que realizaron una request que contenga
 // la palabra "SELECT".
 // La idea es identificar si acaso el atacante obtuvo credenciales a partir de
 // una SQL Injection.
