@@ -15,6 +15,7 @@ const re = require('rematchjs');
 */
 
 const TEXT = fs.readFileSync(path.resolve(__dirname, 'access.log'), 'utf8');
+
 /*
   Cada línea del archivo presenta el siguiente formato:
 
@@ -75,9 +76,20 @@ for (let match of rgx.findIter(TEXT)) {
 */
 
 /*
+  ************************************
+  *  IMPLEMENTACIÓN ACTIVIDAD BONUS  *
+  ************************************
+
+  A continuación encontrará una serie de variables con un valor por defecto,
+  cada una correspondiente a una consulta diferente respecto al archivo de logs.
+  Su tarea será modificar los valores según lo indicado en cada caso
+*/
+
+/*
   CONSULTAS SIMPLES SOBRE LOGS:
-  Pedimos que modifiquen los valores de las siguientes variables
-  acorde a lo que se pide por enunciado.
+
+  La primera parte de la actividad consiste en realizar consultas que permitirán
+  extraer información general de los requests que se encuentran en el archivo de logs
 */
 
 // Extrer todas las líneas con requests tipo POST:
@@ -104,7 +116,7 @@ const CONSULTA4 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes m
 
 // Entregue una consulta que busque aquellas direcciones IPs que realizaron
 // un request que contenga la palabra "admin" .
-const CONSULTA5 = '^!x{.*}$';  // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA5 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
 
 // Si hace lo anterior de manera correcta, encontrará varias direcciones IPs.
 // Necesitamos otra forma entonces de identificar al atacante. Intente entonces
