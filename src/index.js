@@ -93,17 +93,17 @@ for (let match of rgx.findIter(TEXT)) {
 */
 
 // Extrer todas las líneas con requests tipo POST:
-const CONSULTA1 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA1 = '(^|\\n)!x{[0-9.]* - - [^\\n]*POST[^\\n]*}(\\n|$)'; // [0.5 décimas]
 
 // Extraer sólo la dirección IP en los requests tipo GET:
-const CONSULTA2 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA2 = '(^|\\n)!x{[0-9.]*} - - [^\\n]*GET'; // [0.5 décimas]
 
 // Extraer sólo las requests donde el servidor entrega código NOT FOUND (404):
-const CONSULTA3 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA3 = '(^|\\n)[0-9.]* - - \\[[^\\n]*\\] "!x{(POST|GET)[^\\n"]*}" 404'; // [0.5 décimas]
 
 // Extraer IP de todos los requests que se redirigieron (código 302) y hacia dónde se
 // redirigieron (suponer que es la 2da url en la línea de log):
-const CONSULTA4 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA4 = '(^|\\n)!x{[0-9.]*} - - \\[[^\\n]*\\] "(POST|GET)[^\\n"]*" 302[^\\n"]*"!y{[^\\n"]*}"(\\n|$)'; // [0.5 décimas]
 
 /*
   IDENTIFICAR UN POSIBLE ATAQUE AL SERVIDOR:
@@ -116,7 +116,7 @@ const CONSULTA4 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes m
 
 // Entregue una consulta que busque aquellas direcciones IP que realizaron
 // un request que contenga la palabra "admin" .
-const CONSULTA5 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA5 = '(^|\\n)!x{[0-9.]*} - - \\[[^\\n\\]]*\\] "[^\\n"]*admin[^\\n"]*"'; // [0.5 décimas]
 
 // Si hace lo anterior de manera correcta, encontrará varias direcciones IPs.
 // Necesitamos otra forma entonces de identificar al atacante. Intente entonces
@@ -124,12 +124,12 @@ const CONSULTA5 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes m
 // la palabra "SELECT".
 // La idea es identificar si acaso el atacante obtuvo credenciales a partir de
 // una SQL Injection.
-const CONSULTA6 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA6 = '(^|\\n)!x{[0-9.]*} - - \\[[^\\n\\]]*\\] "(POST|GET)[^"\\n]*SELECT[^"\\n]*"'; // [0.25 décimas]
 
 // Si realizó lo anterior con éxito, ya debería saber cuál es la dirección IP
 // del atacante. Obtenga así entonces todas las líneas del archivo log
 // correspondientes a requests realizados por el atacante
-const CONSULTA7 = '^!x{.*}$'; // Esta consulta extrae todo el documento, debes modificarla
+const CONSULTA7 = '(^|\\n)!x{84.553.41.57[^\\n]*}($|\\n)'; // [0.25 décimas]
 
 // FUNCIÓN PARA OBTENER EL OBJETO CON TODOS LOS RESULTADOS DE LAS CONSULTAS
 // que será utilizado en la corrección:
